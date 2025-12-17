@@ -14,7 +14,7 @@ and receive basic recommendations.
 
 ## System Architecture
 The system is composed of the following services:
-- - Frontend service (server-rendered web UI)
+- Frontend service (server-rendered web UI)
 - Backend REST API service
 - Wine recommendation microservice
 - MongoDB database
