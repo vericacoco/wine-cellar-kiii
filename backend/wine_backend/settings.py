@@ -116,3 +116,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+import os
+
+MONGO_HOST = os.environ.get("MONGO_HOST", "localhost")
+MONGO_PORT = int(os.environ.get("MONGO_PORT", 27017))
