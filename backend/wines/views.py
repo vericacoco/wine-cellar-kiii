@@ -1,5 +1,24 @@
 from django.shortcuts import render, redirect
 from .mongo import wines_collection
+import os
+import requests
+from django.http import JsonResponse
+from django.shortcuts import render, redirect
+from .mongo import wines_collection
+
+RECOMMENDER_URL = os.environ.get("RECOMMENDER_URL", "http://recommender:8001")
+
+def recommend(request):
+    wine_type = request.GET.get("type", "red")
+
+    r = requests.get(
+        f"{RECOMMENDER_URL}/recommend",
+        params={"wine_type": wine_type},
+        timeout=5
+    )
+    r.raise_for_status()
+    return JsonResponse(r.json())
+
 
 
 def wine_list(request):
